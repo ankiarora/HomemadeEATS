@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.android.homemadeEATS.viewmodel.common.AddressViewModel" />
+    </data>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <fragment
+            android:id="@+id/map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".views.fragment.common.SetLocationFragment" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/locality"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dp_8"
+                android:background="@drawable/rounded_corner"
+                android:gravity="center"
+                android:padding="@dimen/dp_10"
+                android:text="@={viewModel.Companion.mapsSelectedAddress}"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_16" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnSaveLocation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/dp_8"
+                android:layout_marginTop="@dimen/dp_60"
+                android:background="@color/dark_brown"
+                android:text="CONFIRM LOCATION"
+                android:textColor="@color/white" />
+
+
+        </LinearLayout>
+    </RelativeLayout>
+</layout>

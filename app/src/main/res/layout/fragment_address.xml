@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.android.homemadeEATS.viewmodel.common.AddressViewModel" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".views.fragment.common.AddressFragment"
+        android:padding="@dimen/dp_16"
+        android:orientation="vertical"
+        android:background="@color/white">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@mipmap/logo_transparent"
+            android:background="@color/dark_brown"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/dp_20"
+            android:layout_marginBottom="@dimen/dp_30"/>
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/etAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/address"
+            android:background="@drawable/black_border_rounder_corner"
+            android:padding="@dimen/dp_10"
+            android:text="@={viewModel.address}" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/etStreet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/street_building"
+            android:layout_marginTop="@dimen/dp_14"
+            android:background="@drawable/black_border_rounder_corner"
+            android:padding="@dimen/dp_10"
+            android:text="@={viewModel.Companion.streetOrBuildingName}" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etCity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_14"
+                android:hint="@string/city"
+                android:background="@drawable/black_border_rounder_corner"
+                android:padding="@dimen/dp_10"
+                android:layout_weight="1"
+                android:layout_marginRight="@dimen/dp_4"
+                android:text="@={viewModel.Companion.city}" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etState"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_14"
+                android:hint="@string/state"
+                android:background="@drawable/black_border_rounder_corner"
+                android:padding="@dimen/dp_10"
+                android:layout_weight="1"
+                android:layout_marginLeft="@dimen/dp_4"
+                android:text="@={viewModel.Companion.state}" />
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/etLandmark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_14"
+            android:hint="@string/landmark"
+            android:background="@drawable/black_border_rounder_corner"
+            android:padding="@dimen/dp_10"
+            android:text="@={viewModel.landmark}" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/etPincode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_14"
+            android:hint="@string/pincode"
+            android:background="@drawable/black_border_rounder_corner"
+            android:padding="@dimen/dp_10"
+            android:text="@={viewModel.Companion.pincode}" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/etSaveAs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_14"
+            android:hint="@string/save_as"
+            android:background="@drawable/black_border_rounder_corner"
+            android:padding="@dimen/dp_10"
+            android:text="@={viewModel.saveAs}" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnSaveAddress"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:background="@color/dark_brown"
+            android:textColor="@color/white"
+            android:layout_marginTop="@dimen/dp_60"
+            android:layout_gravity="center"
+            android:text="SAVE" />
+    </LinearLayout>
+</layout>

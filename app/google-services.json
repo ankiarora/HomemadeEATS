@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "587394545948",
+    "firebase_url": "https://dabbawala-307114-default-rtdb.firebaseio.com",
+    "project_id": "dabbawala-307114",
+    "storage_bucket": "dabbawala-307114.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:587394545948:android:b76fb2fb5989c949ac62d9",
+        "android_client_info": {
+          "package_name": "com.android.homemadeEATS"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "587394545948-2kgeb79kaa73ogg9tnjp36udgsdv089u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAP520Flvvd_5aNy6phdMBK3jR4qgauoAs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "587394545948-2kgeb79kaa73ogg9tnjp36udgsdv089u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

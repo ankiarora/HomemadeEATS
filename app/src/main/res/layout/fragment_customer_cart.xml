@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.android.homemadeEATS.viewmodel.customer.CustomerMealsViewModel" />
+    </data>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:src="@mipmap/logo_white"
+                app:tint="@color/dark_brown" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/sp_16"
+                android:gravity="center"
+                android:textColor="@color/dark_gray"
+                android:text="Oops!! Your cart is empty.\nAdd some items to order."/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llCustomerCartItems"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@color/white">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_weight="1"
+                android:id="@+id/place_orders_list"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background="@color/white"
+                tools:listitem="@layout/customer_order_new_item" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/summarizedCart"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@color/light_brown"
+                android:padding="@dimen/dp_16">
+
+                <LinearLayout
+                    android:id="@+id/llCustomerLocation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:padding="@dimen/dp_4"
+                    android:background="@drawable/rounded_corner"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/location_icon" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/location"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/sp_16"
+                        android:textColor="@color/black"
+                        android:layout_marginLeft="@dimen/dp_4" />
+                </LinearLayout>
+
+
+                <TextView
+                    android:id="@+id/foodPriceTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Total Price: "
+                    android:textSize="@dimen/dp_16"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="@dimen/dp_16"
+                    app:layout_constraintTop_toBottomOf="@id/llCustomerLocation"
+                    app:layout_constraintLeft_toLeftOf="parent" />
+
+                <TextView
+                    android:id="@+id/foodPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/dp_16"
+                    android:text="300"
+                    android:layout_marginTop="@dimen/dp_16"
+                    android:textColor="@color/black"
+                    app:layout_constraintTop_toBottomOf="@id/llCustomerLocation"
+                    app:layout_constraintRight_toRightOf="parent" />
+
+                <TextView
+                    android:id="@+id/taxChargesTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Gst and CGst:"
+                    android:textSize="@dimen/dp_16"
+                    android:textColor="@color/black"
+                    app:layout_constraintTop_toBottomOf="@id/foodPriceTitle"
+                    app:layout_constraintLeft_toLeftOf="parent" />
+
+                <TextView
+                    android:id="@+id/taxCharges"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="20"
+                    android:textSize="@dimen/dp_16"
+                    android:textColor="@color/black"
+                    app:layout_constraintTop_toBottomOf="@id/foodPrice"
+                    app:layout_constraintRight_toRightOf="parent" />
+
+                <TextView
+                    android:id="@+id/totalPriceTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Total Price:"
+                    android:textSize="@dimen/dp_16"
+                    android:textColor="@color/black"
+                    app:layout_constraintTop_toBottomOf="@id/taxChargesTitle"
+                    app:layout_constraintLeft_toLeftOf="parent" />
+
+                <TextView
+                    android:id="@+id/totalPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/dp_16"
+                    android:textColor="@color/black"
+                    app:layout_constraintTop_toBottomOf="@id/taxCharges"
+                    app:layout_constraintRight_toRightOf="parent" />
+
+                <Button
+                    android:id="@+id/customerProceedOrder"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_16"
+                    android:layout_gravity="center"
+                    android:text="Proceed With Payment"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/totalPrice" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </LinearLayout>
+    </RelativeLayout>
+</layout>

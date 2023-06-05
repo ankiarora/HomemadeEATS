@@ -1,0 +1,50 @@
+[
+  {
+    "name": "Hello World",
+    "slot": "Breakfast",
+    "distanceInMiles": 4,
+    "image": ""
+  },
+  {
+    "name": "Abc Ghj",
+    "slot": "Breakfast",
+    "distanceInMiles": 2,
+    "image": ""
+  },
+  {
+    "name": "asdfg",
+    "slot": "Lunch",
+    "distanceInMiles": 5,
+    "image": "https://www.pngegg.com/en/png-bbonr"
+  },
+  {
+    "name": "Abhinav Arora",
+    "slot": "Lunch",
+    "distanceInMiles": 9,
+    "image": ""
+  },
+  {
+    "name": "Asha Arora",
+    "slot": "Lunch",
+    "distanceInMiles": 10,
+    "image": ""
+  },
+  {
+    "name": "Sanjay Arora",
+    "slot": "Dinner",
+    "distanceInMiles": 14,
+    "image": ""
+  },
+  {
+    "name": "Hello World",
+    "slot": "Dinner",
+    "distanceInMiles": 12,
+    "image": ""
+  },
+  {
+    "name": "Ankita Arora",
+    "slot": "Dinner",
+    "distanceInMiles": 10,
+    "image": ""
+  }
+]

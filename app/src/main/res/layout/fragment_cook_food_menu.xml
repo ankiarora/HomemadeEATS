@@ -1,0 +1,596 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.android.homemadeEATS.viewmodel.cook.CookMenuViewModel" />
+    </data>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/ll_food_menu"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ScrollView
+            android:id="@+id/sv_food_menu"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:orientation="vertical"
+                tools:context=".views.fragment.cook.CookFoodMenuFragment"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent">
+
+                <LinearLayout
+                    android:id="@+id/llCookLocation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_margin="@dimen/dp_20">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/location_icon" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/selectedLocation"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/sp_16"
+                        android:textColor="@color/black"
+                        android:textAllCaps="true"
+                        android:layout_marginLeft="@dimen/dp_4" />
+                </LinearLayout>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:cardElevation="17dp"
+                    app:cardCornerRadius="@dimen/dp_12"
+                    android:layout_margin="@dimen/dp_20">
+
+                    <LinearLayout
+                        android:id="@+id/llBreakfast"
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/dp_16">
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:text="Breakfast"
+                                android:textSize="@dimen/sp_16"
+                                android:textColor="@color/black"
+                                android:textStyle="bold"
+                                android:layout_weight="1"
+                                android:textAllCaps="true" />
+
+                            <TextView
+                                android:id="@+id/attachBreakfastFoodImage"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/attach_picture"
+                                android:textColor="@color/dark_brown" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/outerLlBreakfastImages"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="@dimen/dp_20"
+                            android:gravity="center"
+                            android:visibility="gone">
+
+
+                            <com.denzcoskun.imageslider.ImageSlider
+                                android:id="@+id/imageSliderBreakfast"
+                                android:layout_width="wrap_content"
+                                android:layout_height="210dp"
+                                app:iss_auto_cycle="false"
+                                app:iss_period="3000"
+                                app:iss_delay="0"
+                                app:iss_error_image="@drawable/error"
+                                app:iss_placeholder="@android:color/transparent" />
+
+                            <LinearLayout
+                                android:id="@+id/ll_breakfast_images"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_weight="1" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_marginTop="@dimen/dp_20"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/sp_14"
+                            android:text="Add Items for breakfast today" />
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="@dimen/dp_10">
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:layout_weight="1">
+
+                                <LinearLayout
+                                    android:id="@+id/ll_add_breakfast_item"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:gravity="center">
+
+                                    <EditText
+                                        android:id="@+id/et_breakfast_item"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:padding="@dimen/dp_8"
+                                        android:background="@drawable/accept_reject_rounded_corner"
+                                        android:hint="Sandwich" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/ll_add_breakfast_item_qty"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:layout_marginTop="@dimen/dp_10"
+                                    android:gravity="center">
+
+                                    <androidx.appcompat.widget.AppCompatEditText
+                                        android:id="@+id/et_breakfast_item_qty"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:padding="@dimen/dp_8"
+                                        android:background="@drawable/accept_reject_rounded_corner"
+                                        android:hint="2 pieces" />
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/add_breakfast_item_to_chips"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="ADD"
+                                android:textColor="@color/black"
+                                android:textAllCaps="true"
+                                android:gravity="center"
+                                android:padding="@dimen/dp_10"
+                                android:layout_gravity="center"
+                                android:background="@drawable/add_more_item"
+                                android:layout_marginLeft="@dimen/dp_10" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/breakfast_add_error"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@android:color/holo_red_light"
+                            android:visibility="gone"
+                            android:layout_marginTop="@dimen/dp_4"
+                            android:text="Please enter both the fields above" />
+
+                        <com.google.android.material.chip.ChipGroup
+                            android:id="@+id/chipGroupBreakfast"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dp_20" />
+
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/et_breakfast_item_price"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/dp_8"
+                            android:inputType="number"
+                            android:layout_marginTop="@dimen/dp_10"
+                            android:background="@drawable/accept_reject_rounded_corner"
+                            android:hint="Rs. 250" />
+
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/btn_save_breakfast"
+                            android:layout_height="@dimen/dp_30"
+                            android:layout_width="wrap_content"
+                            android:background="@color/bright_blue"
+                            android:textColor="@color/white"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="@dimen/dp_10"
+                            android:text="Save" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:cardElevation="17dp"
+                    app:cardCornerRadius="@dimen/dp_12"
+                    android:layout_margin="@dimen/dp_20">
+
+                    <LinearLayout
+                        android:id="@+id/ll_lunch"
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/dp_16">
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Lunch"
+                                android:textSize="@dimen/sp_16"
+                                android:textColor="@color/black"
+                                android:textStyle="bold"
+                                android:layout_weight="1"
+                                android:textAllCaps="true" />
+
+                            <TextView
+                                android:id="@+id/attach_lunch_food_image"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/attach_picture"
+                                android:textColor="@color/dark_brown" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/outer_ll_lunch_images"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="@dimen/dp_20"
+                            android:gravity="center"
+                            android:visibility="gone">
+
+                            <com.denzcoskun.imageslider.ImageSlider
+                                android:id="@+id/imageSliderLunch"
+                                android:layout_width="wrap_content"
+                                android:layout_height="210dp"
+                                app:iss_auto_cycle="false"
+                                app:iss_period="3000"
+                                app:iss_delay="0"
+                                app:iss_error_image="@drawable/error"
+                                app:iss_placeholder="@android:color/transparent" />
+
+                            <LinearLayout
+                                android:id="@+id/ll_lunch_images"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_weight="1" />
+                        </LinearLayout>
+
+
+                        <TextView
+                            android:layout_marginTop="@dimen/dp_20"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/sp_14"
+                            android:text="Add Items for Lunch today" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="@dimen/dp_10">
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:layout_weight="1">
+
+                                <LinearLayout
+                                    android:id="@+id/ll_add_lunch_item"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:gravity="center">
+
+                                    <androidx.appcompat.widget.AppCompatEditText
+                                        android:id="@+id/et_lunch_item"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:padding="@dimen/dp_8"
+                                        android:background="@drawable/accept_reject_rounded_corner"
+                                        android:hint="Rajma Chawal" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/ll_add_lunch_item_qty"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:layout_marginTop="@dimen/dp_10"
+                                    android:gravity="center">
+
+                                    <androidx.appcompat.widget.AppCompatEditText
+                                        android:id="@+id/et_lunch_item_qty"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:padding="@dimen/dp_8"
+                                        android:background="@drawable/accept_reject_rounded_corner"
+                                        android:hint="1 plate" />
+                                </LinearLayout>
+                            </LinearLayout>
+
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/add_lunch_item_to_chips"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="ADD"
+                                android:textColor="@color/black"
+                                android:textAllCaps="true"
+                                android:gravity="center"
+                                android:padding="@dimen/dp_10"
+                                android:layout_gravity="center"
+                                android:background="@drawable/add_more_item"
+                                android:layout_marginLeft="@dimen/dp_10" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/lunch_add_error"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@android:color/holo_red_light"
+                            android:visibility="gone"
+                            android:layout_marginTop="@dimen/dp_4"
+                            android:text="Please enter both the fields above" />
+
+                        <com.google.android.material.chip.ChipGroup
+                            android:id="@+id/chipGroupLunch"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dp_20" />
+
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/et_lunch_item_price"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/dp_8"
+                            android:inputType="number"
+                            android:background="@drawable/accept_reject_rounded_corner"
+                            android:hint="Rs. 300" />
+
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/btn_save_lunch"
+                            android:layout_height="@dimen/dp_30"
+                            android:layout_width="wrap_content"
+                            android:background="@color/bright_blue"
+                            android:textColor="@color/white"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="@dimen/dp_10"
+                            android:text="Save" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:cardElevation="17dp"
+                    app:cardCornerRadius="@dimen/dp_12"
+                    android:layout_margin="@dimen/dp_20">
+
+                    <LinearLayout
+                        android:id="@+id/ll_dinner"
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/dp_16">
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:text="Dinner"
+                                android:textSize="@dimen/sp_16"
+                                android:textColor="@color/black"
+                                android:textStyle="bold"
+                                android:layout_weight="1"
+                                android:textAllCaps="true" />
+
+                            <TextView
+                                android:id="@+id/attach_dinner_food_image"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/attach_picture"
+                                android:textColor="@color/dark_brown" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/outer_ll_dinner_images"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="@dimen/dp_20"
+                            android:gravity="center"
+                            android:visibility="gone">
+
+                            <com.denzcoskun.imageslider.ImageSlider
+                                android:id="@+id/imageSliderDinner"
+                                android:layout_width="wrap_content"
+                                android:layout_height="210dp"
+                                app:iss_auto_cycle="false"
+                                app:iss_period="3000"
+                                app:iss_delay="0"
+                                app:iss_error_image="@drawable/error"
+                                app:iss_placeholder="@android:color/transparent" />
+
+                            <LinearLayout
+                                android:id="@+id/ll_dinner_images"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_weight="1" />
+
+                        </LinearLayout>
+
+
+                        <TextView
+                            android:layout_marginTop="@dimen/dp_20"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/sp_14"
+                            android:text="Add Items for Dinner today" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="@dimen/dp_10">
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:layout_weight="1">
+
+                                <LinearLayout
+                                    android:id="@+id/ll_add_dinner_item"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:gravity="center">
+
+                                    <androidx.appcompat.widget.AppCompatEditText
+                                        android:id="@+id/et_dinner_item"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:padding="@dimen/dp_8"
+                                        android:background="@drawable/accept_reject_rounded_corner"
+                                        android:hint="Moong Dal" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/ll_add_dinner_item_qty"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:layout_marginTop="@dimen/dp_10"
+                                    android:gravity="center">
+
+                                    <androidx.appcompat.widget.AppCompatEditText
+                                        android:id="@+id/et_dinner_item_qty"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:padding="@dimen/dp_8"
+                                        android:background="@drawable/accept_reject_rounded_corner"
+                                        android:hint="1 bowl" />
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/add_dinner_item_to_chips"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="ADD"
+                                android:textColor="@color/black"
+                                android:gravity="center"
+                                android:padding="@dimen/dp_10"
+                                android:layout_gravity="center"
+                                android:background="@drawable/add_more_item"
+                                android:layout_marginLeft="@dimen/dp_10" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/dinner_add_error"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@android:color/holo_red_light"
+                            android:visibility="gone"
+                            android:layout_marginTop="@dimen/dp_4"
+                            android:text="Please enter both the fields above" />
+
+                        <com.google.android.material.chip.ChipGroup
+                            android:id="@+id/chipGroupdinner"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dp_20" />
+
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/et_dinner_item_price"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/dp_8"
+                            android:inputType="number"
+                            android:background="@drawable/accept_reject_rounded_corner"
+                            android:hint="Rs. 350" />
+
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/btn_save_dinner"
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/dp_30"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="@dimen/dp_10"
+                            android:background="@color/bright_blue"
+                            android:text="Save"
+                            android:textColor="@color/white" />
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+
+        </ScrollView>
+
+        <ImageView
+            android:id="@+id/iv_delete_image"
+            android:layout_width="40dp"
+            android:layout_height="@dimen/dp_40"
+            android:src="@drawable/open_trash"
+            android:background="@android:color/transparent"
+            app:tint="@color/dark_brown"
+            android:alpha="0"
+            android:layout_gravity="center"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/dp_10" />
+    </RelativeLayout>
+</layout>

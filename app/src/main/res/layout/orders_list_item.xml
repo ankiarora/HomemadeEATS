@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="order"
+            type="com.android.homemadeEATS.model.cook.CookNewOrder" />
+    </data>
+
+    <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/cardViewOrderItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:cardElevation="17dp"
+        app:cardCornerRadius="@dimen/dp_12"
+        android:layout_margin="@dimen/dp_20">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/cookName"
+                android:text="@{order.customerFirstName +` `+ order.customerLastName}"
+                android:textSize="@dimen/sp_16"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:layout_marginBottom="@dimen/dp_2"
+                android:layout_weight="1"
+                android:background="@color/light_blue"
+                android:padding="@dimen/dp_8" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="@dimen/dp_8"
+                android:layout_marginTop="@dimen/dp_4"
+                android:layout_marginBottom="@dimen/dp_4"
+                android:layout_marginRight="@dimen/dp_8">
+
+                <TextView
+                    android:id="@+id/totalItems"
+                    android:layout_width="0dp"
+                    android:text="@{order.totalMealItems}"
+                    android:textSize="@dimen/sp_16"
+                    android:textColor="@color/bright_blue"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_margin="@dimen/dp_4" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/right_arrow_icon" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="@dimen/dp_8"
+                android:layout_marginRight="@dimen/dp_8">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/money_icon"
+                    app:tint="@color/dark_brown" />
+
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tvPrice"
+                        android:text="@{`Price: Rs. `+order.totalPrice}"
+                        android:textColor="@color/gray"
+                        android:textSize="@dimen/sp_16"
+                        android:layout_marginLeft="@dimen/dp_8"
+                        android:layout_marginTop="@dimen/dp_2"
+                        android:layout_marginBottom="@dimen/dp_2" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tvAmountPaid"
+                        android:text="@{order.getPricePayInfo}"
+                        android:textColor="@color/gray"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/sp_16"
+                        android:layout_marginLeft="@dimen/dp_8"
+                        android:layout_marginTop="@dimen/dp_2"
+                        android:layout_marginBottom="@dimen/dp_2" />
+            </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginLeft="@dimen/dp_8"
+                android:layout_marginRight="@dimen/dp_8"
+                android:layout_marginBottom="@dimen/dp_12">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/bike_icon"
+                    app:tint="@color/dark_brown" />
+
+                <TextView
+                    android:id="@+id/tvDistance"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{order.distance}"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/sp_16"
+                    android:layout_marginLeft="@dimen/dp_8"
+                    android:layout_marginTop="@dimen/dp_8"
+                    android:layout_marginBottom="@dimen/dp_4" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llContact"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginLeft="@dimen/dp_8"
+                android:layout_marginRight="@dimen/dp_8"
+                android:layout_marginBottom="@dimen/dp_12">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/call_icon"
+                    app:tint="@color/dark_brown" />
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@{order.customerPhoneNumber}"
+                    android:textColor="@android:color/holo_blue_dark"
+                    android:textSize="@dimen/sp_16"
+                    android:layout_marginLeft="@dimen/dp_8"
+                    android:layout_marginTop="@dimen/dp_2"
+                    android:layout_marginBottom="@dimen/dp_4" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/acceptRejectLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_16"
+                android:layout_marginLeft="@dimen/dp_8"
+                android:layout_marginRight="@dimen/dp_8"
+                android:layout_marginBottom="@dimen/dp_16"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/acceptOrder"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/dp_30"
+                    android:layout_weight="1"
+                    android:background="#98FB98"
+                    android:layout_marginEnd="@dimen/dp_4"
+                    android:text="ACCEPT" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/rejectOrder"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/dp_30"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="@dimen/dp_4"
+                    android:textColor="@color/white"
+                    android:background="#FA8072"
+                    android:text="REJECT" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvEnterOtp"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_30"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="@dimen/sp_18"
+                android:textColor="@color/bright_blue"
+                android:layout_marginEnd="@dimen/dp_4"
+                android:text="Enter 6 digit OTP" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/orderPrepared"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_30"
+                android:layout_weight="1"
+                android:background="#98FB98"
+                android:visibility="gone"
+                android:layout_marginTop="@dimen/dp_16"
+                android:text="ORDER Prepared"
+                android:layout_marginLeft="@dimen/dp_8"
+                android:layout_marginRight="@dimen/dp_8"
+                android:layout_marginBottom="@dimen/dp_16"/>
+
+            <LinearLayout
+                android:id="@+id/llLayout"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginLeft="@dimen/dp_8"
+                android:layout_marginRight="@dimen/dp_8"
+                android:layout_marginBottom="@dimen/dp_16">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/sp_16"
+                    android:layout_marginTop="@dimen/dp_16"
+                    android:textColor="@color/dark_gray"
+                    android:text="Please enter the OTP provided by your customer." />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/cookOtp"
+                    android:layout_width="@dimen/dp_100"
+                    android:layout_height="wrap_content"
+                    android:hint="OTP"
+                    android:gravity="center"
+                    android:padding="@dimen/dp_4"
+                    android:layout_marginTop="@dimen/dp_8"
+                    android:background="@drawable/black_border_rounder_corner" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/submitOtp"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_30"
+                    android:layout_weight="1"
+                    android:background="#98FB98"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/dp_16"
+                    android:layout_marginEnd="@dimen/dp_4"
+                    android:text="Verify" />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</layout>

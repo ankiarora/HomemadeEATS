@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.android.homemadeEATS.viewmodel.common.RegistrationViewModel" />
+    </data>
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="@dimen/dp_20"
+            android:background="@color/white"
+            tools:context=".views.fragment.common.RegistrationFragment">
+
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@mipmap/logo_white"
+                android:layout_gravity="center" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/et_first_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_16"
+                android:background="@drawable/black_border_rounder_corner"
+                android:padding="@dimen/dp_10"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_18"
+                android:imeOptions="actionNext"
+                android:text="@={viewModel.firstName}"
+                android:hint="First Name" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/et_lastName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_20"
+                android:background="@drawable/black_border_rounder_corner"
+                android:padding="@dimen/dp_10"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_18"
+                android:imeOptions="actionNext"
+                android:text="@={viewModel.lastName}"
+                android:hint="Last Name" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/et_email_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_20"
+                android:background="@drawable/black_border_rounder_corner"
+                android:padding="@dimen/dp_10"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_18"
+                android:imeOptions="actionNext"
+                android:text="@={viewModel.emailID}"
+                android:hint="Email Id" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/et_phone_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/black_border_rounder_corner"
+                android:layout_marginTop="@dimen/dp_20"
+                android:padding="@dimen/dp_10"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_18"
+                android:inputType="number"
+                android:imeOptions="actionNext"
+                android:text="@={viewModel.phoneNumber}"
+                android:hint="Phone Number" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/et_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/black_border_rounder_corner"
+                android:layout_marginTop="@dimen/dp_20"
+                android:padding="@dimen/dp_10"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_18"
+                android:inputType="textPassword"
+                android:imeOptions="actionNext"
+                android:text="@={viewModel.password}"
+                android:hint="Enter Password" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/et_reenter_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/black_border_rounder_corner"
+                android:layout_marginTop="@dimen/dp_20"
+                android:padding="@dimen/dp_10"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_18"
+                android:inputType="textPassword"
+                android:imeOptions="actionNext"
+                android:text="@={viewModel.reenterPassword}"
+                android:hint="Re-enter Password" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/sp_14"
+                android:layout_marginTop="@dimen/dp_20"
+                android:layout_marginBottom="@dimen/dp_20"
+                android:textColor="@color/black"
+                android:text="Who are you?" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/chip_group"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    app:selectionRequired="true"
+                    app:singleSelection="true">
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip1"
+                        style="@style/Widget.MaterialComponents.Chip.Filter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:text="Customer"
+                        android:textColor="@android:color/black"
+                        app:checkedIcon="@drawable/accept"
+                        app:chipBackgroundColor="@color/light_brown"
+                        app:chipEndPadding="8dp"
+                        app:chipIconTint="@android:color/white"
+                        app:chipStartPadding="8dp"
+                        app:textEndPadding="5dp"
+                        app:textStartPadding="5dp" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip2"
+                        style="@style/Widget.MaterialComponents.Chip.Filter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:text="Cook"
+                        android:textColor="@android:color/black"
+                        app:checkedIcon="@drawable/accept"
+                        app:chipBackgroundColor="@color/light_brown"
+                        app:chipEndPadding="8dp"
+                        app:chipIconTint="@android:color/white"
+                        app:chipStartPadding="8dp"
+                        app:textEndPadding="5dp"
+                        app:textStartPadding="5dp" />
+
+                </com.google.android.material.chip.ChipGroup>
+
+            </LinearLayout>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_register"
+                android:layout_height="wrap_content"
+                android:layout_width="150dp"
+                android:background="@color/dark_brown"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp_20"
+                android:layout_marginTop="@dimen/dp_60"
+                android:layout_gravity="center"
+                android:text="Register" />
+        </LinearLayout>
+    </ScrollView>
+</layout>

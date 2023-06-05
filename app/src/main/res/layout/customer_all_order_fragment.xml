@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.android.homemadeEATS.viewmodel.customer.CustomerMealsViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:src="@mipmap/logo_white"
+                app:tint="@color/dark_brown" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/sp_16"
+                android:gravity="center"
+                android:textColor="@color/dark_gray"
+                android:text="Sorry! You do not have any cooks nearby." />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/rlAllOrders"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/white">
+
+            <LinearLayout
+                android:id="@+id/search_item"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:paddingLeft="@dimen/dp_16"
+                android:paddingRight="@dimen/dp_16"
+                android:paddingTop="@dimen/dp_16">
+
+                <EditText
+                    android:id="@+id/searchItem"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="Search Item"
+                    android:gravity="center_vertical" />
+
+                <ImageView
+                    android:id="@+id/searchGoBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/search_icon"
+                    android:layout_gravity="center" />
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/place_orders_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/search_item"
+                android:layout_above="@id/bottom_cart_layout"
+                android:background="@color/white" />
+
+            <LinearLayout
+                android:id="@+id/bottom_cart_layout"
+                android:layout_width="match_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dp_16"
+                android:background="@color/light_brown">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Check the cart items"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/sp_20" />
+
+                    <TextView
+                        android:id="@+id/total_amount_of_items"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/total_amount_of_meals"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/cart_icon"
+                    android:layout_gravity="center" />
+            </LinearLayout>
+
+            <include
+                android:id="@+id/loadMoreLayout"
+                android:layout_alignParentBottom="true"
+                android:visibility="visible"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                layout="@layout/load_more_indication_view" />
+
+        </RelativeLayout>
+    </RelativeLayout>
+</layout>

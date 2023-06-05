@@ -1,0 +1,62 @@
+<resources>
+    <string name="app_name">HomemadeEATS</string>
+
+    <string name="login_email_hint">Enter Email ID</string>
+    <string name="login_password_hint">Enter Password</string>
+    <string name="server_client_id">295959347605-o1fpg4n7k0fiiskafa4ikpip23hao12i.apps.googleusercontent.com</string>
+    <string name="cook_nav_item_0">Menu</string>
+    <string name="cook_nav_item_1">Booked</string>
+    <string name="cook_nav_item_2">Pending</string>
+    <string name="cook_nav_item_3">Ready</string>
+    <string name="cook_nav_item_4">More</string>
+
+    <string name="customer_nav_item_0">Order</string>
+    <string name="customer_nav_item_1">Cart</string>
+    <string name="customer_nav_item_2">Booked</string>
+    <string name="customer_nav_item_3">More</string>
+
+    <!--    generic-->
+    <string name="generic_error_msg">Unexpected error occurred. Please try again.</string>
+    <string name="validation_error_title">Validation Error</string>
+    <string name="field_empty_message">Please fill all the fields</string>
+    <string name="password_not_match_message">Passwords do not match</string>
+    <string name="leaving_alert_title">Leaving?</string>
+    <string name="leaving_alert_message">Do you wish to leave Dabba Wala?</string>
+    <!--    Menu-->
+    <string name="menu_saving_before">You will not be allowed to edit your %1$s menu items after saving.</string>
+    <string name="important_note_dialog_title">IMPORTANT NOTE</string>
+    <string name="great_dialog_title">GREAT</string>
+    <string name="attach_picture"><u>Attach Images</u></string>
+    <string name="image_selection_limit_error">You cannot select more than 4 images</string>
+    <string name="menu_saving_validation">Please add at least one food item and price.</string>
+    <string name="menu_breakfast_title">Breakfast</string>
+    <string name="menu_lunch_title">Lunch</string>
+    <string name="menu_dinner_title">Dinner</string>
+
+    <!--    cook -->
+    <string name="ask_otp_title">Enter OTP?</string>
+    <string name="ask_otp_message">Please enter the OTP provided by your customer.</string>
+
+
+    <!--    address-->
+    <string name="cook_add_address_title">Enter/Confirm Pickup Address</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="address">Address</string>
+    <string name="street_building">Street/Building</string>
+    <string name="city">City</string>
+    <string name="state">State</string>
+    <string name="landmark">Landmark</string>
+    <string name="pincode">Pincode</string>
+    <string name="save_as">Save As</string>
+    <string name="add_new_address">Add\nAddress</string>
+    <string name="select_address">Select\nAddress</string>
+    <string name="continue_selected_address">Continue</string>
+
+
+    <!--    shared prefs-->
+    <string name="pref_file_key">com.android.homemadeEATS.PREFERENCES_KEY_FILE</string>
+    <string name="pref_login_status">com.android.homemadeEATS.login_status</string>
+    <string name="pref_user_type">com.android.homemadeEATS.user_type</string>
+    <string name="pref_user_token">com.android.homemadeEATS.user_token</string>
+
+</resources>

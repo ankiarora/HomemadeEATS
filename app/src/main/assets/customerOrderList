@@ -1,0 +1,102 @@
+[
+  {
+    "cookName": "Mamta Sharma",
+    "mealType": "Breakfast",
+    "mealItems": [
+      {
+        "mealName": "Dosa",
+        "mealDescription": "2 pieces"
+      },
+      {
+        "mealName": "Idli",
+        "mealDescription": "4 pieces"
+      },
+      {
+        "mealName": "Sambar",
+        "mealDescription": "1 bowl"
+      },
+      {
+        "mealName": "Tea",
+        "mealDescription": "1 Cup"
+      }
+    ],
+    "price": "Rs. 250",
+    "images": "",
+    "distance": "4.5 miles"
+  },
+  {
+    "cookName": "Mamta Sharma",
+    "mealType": "Breakfast",
+    "mealItems": [
+      {
+        "mealName": "Dosa",
+        "mealDescription": "2 pieces"
+      },
+      {
+        "mealName": "Idli",
+        "mealDescription": "4 pieces"
+      },
+      {
+        "mealName": "Sambar",
+        "mealDescription": "1 bowl"
+      },
+      {
+        "mealName": "Tea",
+        "mealDescription": "1 Cup"
+      }
+    ],
+    "price": "Rs. 250",
+    "images": "",
+    "distance": "4.5 miles"
+  },
+  {
+    "cookName": "Mamta Sharma",
+    "mealType": "Breakfast",
+    "mealItems": [
+      {
+        "mealName": "Dosa",
+        "mealDescription": "2 pieces"
+      },
+      {
+        "mealName": "Idli",
+        "mealDescription": "4 pieces"
+      },
+      {
+        "mealName": "Sambar",
+        "mealDescription": "1 bowl"
+      },
+      {
+        "mealName": "Tea",
+        "mealDescription": "1 Cup"
+      }
+    ],
+    "price": "Rs. 250",
+    "images": "",
+    "distance": "4.5 miles"
+  },
+  {
+    "cookName": "Mamta Sharma",
+    "mealType": "Breakfast",
+    "mealItems": [
+      {
+        "mealName": "Dosa",
+        "mealDescription": "2 pieces"
+      },
+      {
+        "mealName": "Idli",
+        "mealDescription": "4 pieces"
+      },
+      {
+        "mealName": "Sambar",
+        "mealDescription": "1 bowl"
+      },
+      {
+        "mealName": "Tea",
+        "mealDescription": "1 Cup"
+      }
+    ],
+    "price": "Rs. 250",
+    "images": "",
+    "distance": "4.5 miles"
+  }
+]

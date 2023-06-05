@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="BottomNavigationView" parent="@style/TextAppearance.AppCompat.Caption">
+        <item name="android:textSize">@dimen/sp_16</item>
+    </style>
+
+    <style name="BottomNavigationView.Active" parent="@style/TextAppearance.AppCompat.Caption">
+        <item name="android:textSize">@dimen/sp_18</item>
+    </style>
+    <style name="LoginScreen" parent="@style/Theme.AppCompat.Light.NoActionBar">
+    </style>
+</resources>
