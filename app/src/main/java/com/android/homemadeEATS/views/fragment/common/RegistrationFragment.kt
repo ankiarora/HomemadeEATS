@@ -27,7 +27,6 @@ import java.util.concurrent.TimeUnit
 
 
 class RegistrationFragment : BaseFragment() {
-
     private lateinit var verificationId: String
     private lateinit var mAuth: FirebaseAuth
 
@@ -54,16 +53,7 @@ class RegistrationFragment : BaseFragment() {
         observeRegistration()
     }
 
-
-    // below method is use to verify code from Firebase.
-    private fun verifyCode(code: String) {
-        // below line is used for getting getting
-        // credentials from our verification id and code.
-        val credential = PhoneAuthProvider.getCredential(verificationId, code)
-    }
-
     private fun observeRegistration() {
-
         btn_register.setOnClickListener {
             if ((viewModel as RegistrationViewModel).isFieldEmpty()) {
                 showValidationErrorDialog(
@@ -88,28 +78,27 @@ class RegistrationFragment : BaseFragment() {
                 }
                 (viewModel as RegistrationViewModel).getRegistrationResponse()
                     .observe(
-                        viewLifecycleOwner,
-                        { activeData ->
-                            if (activeData?.message != null) {
-                                Toast.makeText(
-                                    requireContext(),
-                                    activeData.message,
-                                    Toast.LENGTH_LONG
-                                )
-                                    .show()
-                                if (activeData.message.equals("Signup Successfull"))
-                                    requireActivity().onBackPressed()
-                            } else
-                                Toast.makeText(
-                                    requireContext(),
-                                    activeData?.error,
-                                    Toast.LENGTH_LONG
-                                )
-                                    .show()
-                        })
+                        viewLifecycleOwner
+                    ) { activeData ->
+                        if (activeData?.message != null) {
+                            Toast.makeText(
+                                requireContext(),
+                                activeData.message,
+                                Toast.LENGTH_LONG
+                            )
+                                .show()
+                            if (activeData.message.equals("Signup Successfull"))
+                                requireActivity().onBackPressed()
+                        } else
+                            Toast.makeText(
+                                requireContext(),
+                                activeData?.error,
+                                Toast.LENGTH_LONG
+                            )
+                                .show()
+                    }
             }
         }
-
         chip_group
     }
 
