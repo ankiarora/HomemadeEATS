@@ -75,38 +75,38 @@ open class LoginFragment : BaseFragment() {
 
     private fun openAddressScreen() {
         (viewModel as LoginViewModel).loginUser().observe(
-            viewLifecycleOwner,
-            { activeData ->
-                if (activeData?.message != null) {
-                    this.userType = activeData.user?.userType
-                    Toast.makeText(requireContext(), activeData.message, Toast.LENGTH_LONG)
-                        .show()
-                    with(sharedPref?.edit()) {
-                        this?.putBoolean(getString(R.string.pref_login_status), true)
-                        activeData.user?.userType?.let {
-                            this?.putInt(
-                                getString(R.string.pref_user_type),
-                                it
-                            )
-                        }
-                        this?.putString(
-                            getString(R.string.pref_user_token),
-                            activeData.user?.token
+            viewLifecycleOwner
+        ) { activeData ->
+            if (activeData?.message != null) {
+                this.userType = activeData.user?.userType
+                Toast.makeText(requireContext(), activeData.message, Toast.LENGTH_LONG)
+                    .show()
+                with(sharedPref?.edit()) {
+                    this?.putBoolean(getString(R.string.pref_login_status), true)
+                    activeData.user?.userType?.let {
+                        this?.putInt(
+                            getString(R.string.pref_user_type),
+                            it
                         )
-                        this?.apply()
                     }
-                    (viewModel as LoginViewModel).setAccessToken(
-                        sharedPref?.getString(
-                            getString(R.string.pref_user_token),
-                            ""
-                        )
+                    this?.putString(
+                        getString(R.string.pref_user_token),
+                        activeData.user?.token
                     )
-                    isAddressAdded()
-                } else {
-                    Toast.makeText(requireContext(), activeData?.error, Toast.LENGTH_LONG)
-                        .show()
+                    this?.apply()
                 }
-            })
+                (viewModel as LoginViewModel).setAccessToken(
+                    sharedPref?.getString(
+                        getString(R.string.pref_user_token),
+                        ""
+                    )
+                )
+                isAddressAdded()
+            } else {
+                Toast.makeText(requireContext(), activeData?.error, Toast.LENGTH_LONG)
+                    .show()
+            }
+        }
     }
 
     private fun showValidationErrorDialog(message: String) {
@@ -159,7 +159,7 @@ open class LoginFragment : BaseFragment() {
                     intent.putExtra("userType", userType)
                     intent.flags =
                         Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                    startActivity(intent)
+//                    startActivity(intent)
                 }
 
                 response.equals("true") -> {
@@ -188,14 +188,14 @@ open class LoginFragment : BaseFragment() {
     }
 
     private fun getUserProfile() {
-        (viewModel as LoginViewModel).getUserProfile().observe(viewLifecycleOwner,
-            { activeData ->
-                if (activeData.userProfile == null)
-                    Toast.makeText(context, activeData.error, Toast.LENGTH_LONG).show()
-                else {
-                    openHomeScreen()
-                }
-            })
+        (viewModel as LoginViewModel).getUserProfile().observe(viewLifecycleOwner
+        ) { activeData ->
+            if (activeData.userProfile == null)
+                Toast.makeText(context, activeData.error, Toast.LENGTH_LONG).show()
+            else {
+                openHomeScreen()
+            }
+        }
     }
 
     private fun openHomeScreen() {
