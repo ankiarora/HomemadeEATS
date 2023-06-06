@@ -144,7 +144,6 @@ open class LoginFragment : BaseFragment() {
                     ""
                 )
             )
-
             isAddressAdded()
         }
     }
