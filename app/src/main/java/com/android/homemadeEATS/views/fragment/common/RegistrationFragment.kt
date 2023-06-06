@@ -54,14 +54,6 @@ class RegistrationFragment : BaseFragment() {
         observeRegistration()
     }
 
-
-    // below method is use to verify code from Firebase.
-    private fun verifyCode(code: String) {
-        // below line is used for getting getting
-        // credentials from our verification id and code.
-        val credential = PhoneAuthProvider.getCredential(verificationId, code)
-    }
-
     private fun observeRegistration() {
 
         btn_register.setOnClickListener {

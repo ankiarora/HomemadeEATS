@@ -19,6 +19,7 @@ class SplashActivity : Activity() {
                 finish()
             }
         }
+
         handler.postDelayed(runnable, 3000)
     }
 }
