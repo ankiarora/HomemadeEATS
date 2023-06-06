@@ -27,7 +27,6 @@ import java.util.concurrent.TimeUnit
 
 
 class RegistrationFragment : BaseFragment() {
-    private lateinit var verificationId: String
     private lateinit var mAuth: FirebaseAuth
 
     override fun onCreateView(
