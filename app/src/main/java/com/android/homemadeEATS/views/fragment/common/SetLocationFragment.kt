@@ -41,6 +41,7 @@ class SetLocationFragment : BaseFragment(), OnMapReadyCallback {
     override fun onAttach(context: Context) {
         super.onAttach(context)
         this.activity = context
+
     }
 
     override fun onCreateView(
