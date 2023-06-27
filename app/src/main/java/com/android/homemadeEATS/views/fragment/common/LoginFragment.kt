@@ -159,7 +159,7 @@ open class LoginFragment : BaseFragment() {
                     intent.putExtra("userType", userType)
                     intent.flags =
                         Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-//                    startActivity(intent)
+                    startActivity(intent)
                 }
 
                 response.equals("true") -> {
@@ -169,7 +169,14 @@ open class LoginFragment : BaseFragment() {
                         Toast.LENGTH_LONG
                     )
                         .show()
-                    getUserProfile()
+//                    getUserProfile()
+
+                    val intent = Intent(requireContext(), AddressActivity::class.java)
+                    intent.putExtra("isSelected", true)
+                    intent.putExtra("userType", userType)
+                    intent.flags =
+                        Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    startActivity(intent)
                 }
 
                 else -> {
@@ -188,7 +195,8 @@ open class LoginFragment : BaseFragment() {
     }
 
     private fun getUserProfile() {
-        (viewModel as LoginViewModel).getUserProfile().observe(viewLifecycleOwner
+        (viewModel as LoginViewModel).getUserProfile().observe(
+            viewLifecycleOwner
         ) { activeData ->
             if (activeData.userProfile == null)
                 Toast.makeText(context, activeData.error, Toast.LENGTH_LONG).show()
@@ -206,12 +214,14 @@ open class LoginFragment : BaseFragment() {
                 startActivity(intent)
                 requireActivity().finish()
             }
+
             1 -> {
                 val intent = Intent(requireContext(), CookNavActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 startActivity(intent)
                 requireActivity().finish()
             }
+
             2 -> {
                 //TODO
                 //call the screen for delivery user
