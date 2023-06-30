@@ -70,9 +70,9 @@ class CookNavActivity : MainActivity() {
         bottomNavigationView.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.menu_item_0 -> setCurrentFragment(CookFoodMenuFragment())
-                R.id.menu_item_1 -> setCurrentFragment(CookBookedOrdersFragment())
-                R.id.menu_item_2 -> setCurrentFragment(CookPendingOrdersFragment())
-                R.id.menu_item_3 -> setCurrentFragment(CookPreparedOrdersFragment())
+//                R.id.menu_item_1 -> setCurrentFragment(CookBookedOrdersFragment())
+//                R.id.menu_item_2 -> setCurrentFragment(CookPendingOrdersFragment())
+//                R.id.menu_item_3 -> setCurrentFragment(CookPreparedOrdersFragment())
                 else -> setCurrentFragment(MoreFragment())
             }
         }

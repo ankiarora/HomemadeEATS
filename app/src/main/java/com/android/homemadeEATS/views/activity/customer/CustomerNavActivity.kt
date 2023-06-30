@@ -71,9 +71,9 @@ class CustomerNavActivity : MainActivity(), PaymentResultWithDataListener {
         bottomNavigationView.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.menu_item_0 -> setCurrentFragment(CustomerAllOrdersFragment())
-                R.id.menu_item_1 -> setCurrentFragment(CustomerCartFragment())
-                R.id.menu_item_2 -> setCurrentFragment(CustomerBookedOrdersFragment())
-                R.id.menu_item_3 -> setCurrentFragment(MoreFragment())
+//                R.id.menu_item_1 -> setCurrentFragment(CustomerCartFragment())
+//                R.id.menu_item_2 -> setCurrentFragment(CustomerBookedOrdersFragment())
+//                R.id.menu_item_3 -> setCurrentFragment(MoreFragment())
                 else -> setCurrentFragment(CookFoodMenuFragment())
             }
         }
