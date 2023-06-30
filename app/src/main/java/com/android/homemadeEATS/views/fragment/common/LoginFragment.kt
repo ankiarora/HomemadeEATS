@@ -133,6 +133,7 @@ open class LoginFragment : BaseFragment() {
 
     override fun onStart() {
         super.onStart()
+
         val account = GoogleSignIn.getLastSignedInAccount(requireActivity())
         val isLoggedIn = sharedPref?.getBoolean(getString(R.string.pref_login_status), false)
         this.userType = sharedPref?.getInt(getString(R.string.pref_user_type), -1)
