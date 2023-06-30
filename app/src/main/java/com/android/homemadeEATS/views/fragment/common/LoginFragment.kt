@@ -137,7 +137,6 @@ open class LoginFragment : BaseFragment() {
         val account = GoogleSignIn.getLastSignedInAccount(requireActivity())
         val isLoggedIn = sharedPref?.getBoolean(getString(R.string.pref_login_status), false)
         this.userType = sharedPref?.getInt(getString(R.string.pref_user_type), -1)
-
         if (isLoggedIn == true || account != null) {
             (viewModel as LoginViewModel).setAccessToken(
                 sharedPref?.getString(
