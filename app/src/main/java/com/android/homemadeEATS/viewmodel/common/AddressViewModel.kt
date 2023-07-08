@@ -14,7 +14,6 @@ class AddressViewModel(application: Application) : BaseViewModel(application) {
     var landmark = MutableLiveData<String>()
     var saveAs = MutableLiveData<String>()
 
-
     private val allAddress by lazy {
         return@lazy addressDomain.getAddresses()
     }

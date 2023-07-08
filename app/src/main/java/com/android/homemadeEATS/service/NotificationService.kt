@@ -17,6 +17,7 @@ import com.google.firebase.messaging.RemoteMessage
 
 
 class NotificationService : FirebaseMessagingService() {
+    // create a notification service for the functionality
     private val TAG = "NotificationService"
     private var sharedPref: SharedPreferences? = null
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
