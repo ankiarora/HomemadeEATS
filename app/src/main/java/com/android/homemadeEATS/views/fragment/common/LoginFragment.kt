@@ -161,8 +161,6 @@ open class LoginFragment : BaseFragment() {
                         Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                     startActivity(intent)
                 }
-
-
                 response.equals("true") -> {
                     Toast.makeText(
                         requireContext(),
