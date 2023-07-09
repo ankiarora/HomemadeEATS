@@ -161,7 +161,6 @@ open class LoginFragment : BaseFragment() {
                         Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                     startActivity(intent)
                 }
-
                 response.equals("true") -> {
                     Toast.makeText(
                         requireContext(),
@@ -188,7 +187,8 @@ open class LoginFragment : BaseFragment() {
     }
 
     private fun getUserProfile() {
-        (viewModel as LoginViewModel).getUserProfile().observe(viewLifecycleOwner
+        (viewModel as LoginViewModel).getUserProfile().observe(
+            viewLifecycleOwner
         ) { activeData ->
             if (activeData.userProfile == null)
                 Toast.makeText(context, activeData.error, Toast.LENGTH_LONG).show()
@@ -206,12 +206,14 @@ open class LoginFragment : BaseFragment() {
                 startActivity(intent)
                 requireActivity().finish()
             }
+
             1 -> {
                 val intent = Intent(requireContext(), CookNavActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 startActivity(intent)
                 requireActivity().finish()
             }
+
             2 -> {
                 //TODO
                 //call the screen for delivery user
