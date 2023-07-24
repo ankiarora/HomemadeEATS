@@ -16,6 +16,8 @@ open class RegistrationViewModel(application: Application) : BaseViewModel(appli
     var phoneNumber = MutableLiveData<String>()
     var password = MutableLiveData<String>()
     var reenterPassword = MutableLiveData<String>()
+    var fileUploaded = MutableLiveData<Boolean>()
+
 
     var loginDomain: LoginDomain = LoginDomain()
     fun getRegistrationResponse(): LiveData<SignupResponse> {
@@ -45,5 +47,10 @@ open class RegistrationViewModel(application: Application) : BaseViewModel(appli
 
     fun passwordMatch(): Boolean {
         return password.value.equals(reenterPassword.value)
+    }
+
+    fun uploadFile(byte [] fileData) {
+        // TODO
+        fileUploaded.setValue(true);
     }
 }
