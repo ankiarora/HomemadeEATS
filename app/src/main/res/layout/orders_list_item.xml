@@ -84,7 +84,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/tvPrice"
-                        android:text="@{`Price: Rs. `+order.totalPrice}"
+                        android:text="@{`Price: $`+order.totalPrice}"
                         android:textColor="@color/gray"
                         android:textSize="@dimen/sp_16"
                         android:layout_marginLeft="@dimen/dp_8"

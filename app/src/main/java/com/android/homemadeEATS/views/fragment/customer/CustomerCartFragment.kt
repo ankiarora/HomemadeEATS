@@ -109,8 +109,8 @@ class CustomerCartFragment : BaseFragment() {
         }
         val taxPrice = Integer.parseInt(taxCharges.text.toString())
         val total = price + taxPrice
-        foodPrice.text = "Rs. $price"
-        totalPrice.text = "Rs. $total"
+        foodPrice.text = "$$price"
+        totalPrice.text = "$$total"
         if (cartItemMealArray.isEmpty()) {
             summarizedCart.visibility = View.GONE
         }

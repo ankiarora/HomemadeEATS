@@ -17,16 +17,16 @@
             xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@color/white"
             android:orientation="vertical"
             android:padding="@dimen/dp_20"
-            android:background="@color/white"
             tools:context=".views.fragment.common.RegistrationFragment">
 
             <ImageView
                 android:layout_width="150dp"
                 android:layout_height="150dp"
-                android:src="@mipmap/logo_white"
-                android:layout_gravity="center" />
+                android:layout_gravity="center"
+                android:src="@mipmap/logo_white" />
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/et_first_name"
@@ -34,12 +34,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp_16"
                 android:background="@drawable/black_border_rounder_corner"
-                android:padding="@dimen/dp_10"
-                android:textColor="@color/black"
-                android:textSize="@dimen/sp_18"
+                android:hint="First Name"
                 android:imeOptions="actionNext"
+                android:padding="@dimen/dp_10"
                 android:text="@={viewModel.firstName}"
-                android:hint="First Name" />
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_18" />
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/et_lastName"
@@ -47,12 +47,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp_20"
                 android:background="@drawable/black_border_rounder_corner"
-                android:padding="@dimen/dp_10"
-                android:textColor="@color/black"
-                android:textSize="@dimen/sp_18"
+                android:hint="Last Name"
                 android:imeOptions="actionNext"
+                android:padding="@dimen/dp_10"
                 android:text="@={viewModel.lastName}"
-                android:hint="Last Name" />
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_18" />
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/et_email_id"
@@ -60,63 +60,63 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp_20"
                 android:background="@drawable/black_border_rounder_corner"
-                android:padding="@dimen/dp_10"
-                android:textColor="@color/black"
-                android:textSize="@dimen/sp_18"
+                android:hint="Email Id"
                 android:imeOptions="actionNext"
+                android:padding="@dimen/dp_10"
                 android:text="@={viewModel.emailID}"
-                android:hint="Email Id" />
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_18" />
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/et_phone_number"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/black_border_rounder_corner"
                 android:layout_marginTop="@dimen/dp_20"
-                android:padding="@dimen/dp_10"
-                android:textColor="@color/black"
-                android:textSize="@dimen/sp_18"
-                android:inputType="number"
+                android:background="@drawable/black_border_rounder_corner"
+                android:hint="Phone Number"
                 android:imeOptions="actionNext"
+                android:inputType="number"
+                android:padding="@dimen/dp_10"
                 android:text="@={viewModel.phoneNumber}"
-                android:hint="Phone Number" />
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_18" />
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/et_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/black_border_rounder_corner"
                 android:layout_marginTop="@dimen/dp_20"
-                android:padding="@dimen/dp_10"
-                android:textColor="@color/black"
-                android:textSize="@dimen/sp_18"
-                android:inputType="textPassword"
+                android:background="@drawable/black_border_rounder_corner"
+                android:hint="Enter Password"
                 android:imeOptions="actionNext"
+                android:inputType="textPassword"
+                android:padding="@dimen/dp_10"
                 android:text="@={viewModel.password}"
-                android:hint="Enter Password" />
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_18" />
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/et_reenter_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/black_border_rounder_corner"
                 android:layout_marginTop="@dimen/dp_20"
-                android:padding="@dimen/dp_10"
-                android:textColor="@color/black"
-                android:textSize="@dimen/sp_18"
-                android:inputType="textPassword"
+                android:background="@drawable/black_border_rounder_corner"
+                android:hint="Re-enter Password"
                 android:imeOptions="actionNext"
+                android:inputType="textPassword"
+                android:padding="@dimen/dp_10"
                 android:text="@={viewModel.reenterPassword}"
-                android:hint="Re-enter Password" />
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_18" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/sp_14"
                 android:layout_marginTop="@dimen/dp_20"
                 android:layout_marginBottom="@dimen/dp_20"
+                android:text="Who are you?"
                 android:textColor="@color/black"
-                android:text="Who are you?" />
+                android:textSize="@dimen/sp_14" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -167,16 +167,59 @@
 
             </LinearLayout>
 
+
+            <LinearLayout
+                android:id="@+id/ll_licence"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:text="To sell food, you need to upload a licence"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/sp_16" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btn_uploadFile"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/dp_10"
+                        android:background="@color/light_brown"
+                        android:text="Add Licence"
+                        android:textAllCaps="false"
+                        android:textSize="@dimen/sp_20" />
+
+                    <TextView
+                        android:id="@+id/tv_filename"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:layout_marginStart="10dp"
+                        android:text="No file selected" />
+                </LinearLayout>
+            </LinearLayout>
+
+
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_register"
-                android:layout_height="wrap_content"
                 android:layout_width="150dp"
-                android:background="@color/dark_brown"
-                android:textColor="@color/white"
-                android:textSize="@dimen/sp_20"
-                android:layout_marginTop="@dimen/dp_60"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Register" />
+                android:layout_marginTop="@dimen/dp_60"
+                android:background="@color/dark_brown"
+                android:text="Register"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp_20" />
         </LinearLayout>
     </ScrollView>
 </layout>

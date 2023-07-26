@@ -68,14 +68,14 @@ class CustomerBookedOrdersFragment : BaseFragment() {
         showProgressBar()
         (viewModel as CustomerMealsViewModel).bookedOrders()
             .observe(
-                viewLifecycleOwner,
-                { activeData ->
-                    hideProgressBar()
-                    if (activeData.meals!!.isEmpty()) {
-                        customerBookedItems.visibility = View.GONE
-                    } else
-                        adapter.submitList(activeData.meals)
-                })
+                viewLifecycleOwner
+            ) { activeData ->
+                hideProgressBar()
+                if (activeData.meals!!.isEmpty()) {
+                    customerBookedItems.visibility = View.GONE
+                } else
+                    adapter.submitList(activeData.meals)
+            }
     }
 
     private var obj = object : CustomerBookedMealItemsAdapter.OnItemClickListener {

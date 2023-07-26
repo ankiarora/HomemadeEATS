@@ -50,7 +50,6 @@ class LoginActivity : MainActivity() {
                 Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
             }
 
-
         val fragment: Fragment = LoginFragment()
         val transaction = supportFragmentManager.beginTransaction()
         transaction.add(R.id.login_container, fragment)

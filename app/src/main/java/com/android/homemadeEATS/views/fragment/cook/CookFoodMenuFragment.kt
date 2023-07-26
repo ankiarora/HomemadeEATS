@@ -214,16 +214,15 @@ class CookFoodMenuFragment : BaseFragment() {
         }
 
         (viewModel as CookMenuViewModel)._selectedLocation.observe(
-            viewLifecycleOwner,
-            {
-                val address = it
-                llCookLocation.setOnClickListener {
-                    val intent = Intent(requireContext(), ViewAddressActivity::class.java)
-                    intent.putExtra("Selected Address", address)
-                    startActivity(intent)
-                }
+            viewLifecycleOwner
+        ) {
+            val address = it
+            llCookLocation.setOnClickListener {
+                val intent = Intent(requireContext(), ViewAddressActivity::class.java)
+                intent.putExtra("Selected Address", address)
+                startActivity(intent)
             }
-        )
+        }
 
     }
 
@@ -273,7 +272,7 @@ class CookFoodMenuFragment : BaseFragment() {
                 ), requestCode
             )
         } else {
-            openSomeActivityForResult()
+            openSomeActivityForResult(requestCode)
         }
     }
 
@@ -309,14 +308,14 @@ class CookFoodMenuFragment : BaseFragment() {
             parts
         )
 
-        menuPostLiveData.observe(viewLifecycleOwner, {
+        menuPostLiveData.observe(viewLifecycleOwner) {
             it?.message?.let { it1 ->
                 showDialogBox(it1)
             }
             if (!it?.error.isNullOrEmpty()) {
                 Toast.makeText(context, it?.error, Toast.LENGTH_LONG).show()
             }
-        })
+        }
     }
 
     override fun onRequestPermissionsResult(
@@ -326,7 +325,7 @@ class CookFoodMenuFragment : BaseFragment() {
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-            openSomeActivityForResult()
+            openSomeActivityForResult(requestCode)
         } else {
             Toast.makeText(
                 context,
@@ -340,28 +339,69 @@ class CookFoodMenuFragment : BaseFragment() {
         return chipGroup.childCount != 0 && price.text.toString().isNotEmpty()
     }
 
-    private var resultLauncher =
+    private var resultLauncher1 =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             val resultCode = result?.resultCode
             val intent: Intent? = result.data
-            Toast.makeText(
-                context,
-                "" + result?.resultCode + "\n" + intent?.clipData + "\n" + intent?.data,
-                Toast.LENGTH_LONG
-            ).show()
             if (resultCode == RESULT_OK) {
-                if (intent?.clipData != null) {
-                    val selectedImages: ClipData = intent.clipData!!
-                    if (selectedImages.itemCount > 4 || ll_breakfast_images.childCount + selectedImages.itemCount > 4) {
-                        showAddImageErrorDialog()
-                    } else {
-                        outerLlBreakfastImages.visibility = View.VISIBLE
-                        updateUI(
-                            selectedImages,
-                            ll_breakfast_images,
-                            BREAKFAST
-                        )
-                    }
+                val selectedImages: ClipData = intent?.clipData!!
+                if (selectedImages.itemCount > 4 || ll_breakfast_images.childCount + selectedImages.itemCount > 4) {
+                    showAddImageErrorDialog()
+                } else {
+                    outerLlBreakfastImages.visibility = View.VISIBLE
+                    updateUI(
+                        selectedImages,
+                        ll_breakfast_images,
+                        BREAKFAST
+                    )
+                }
+            } else {
+                Toast.makeText(
+                    context,
+                    "Sorry! unable to upload image/images",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+        }
+    private var resultLauncher2 =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            val resultCode = result?.resultCode
+            val intent: Intent? = result.data
+            if (resultCode == RESULT_OK) {
+                val selectedImages: ClipData = intent?.clipData!!
+                if (selectedImages.itemCount > 4 || ll_lunch_images.childCount + selectedImages.itemCount > 4) {
+                    showAddImageErrorDialog()
+                } else {
+                    outer_ll_lunch_images.visibility = View.VISIBLE
+                    updateUI(
+                        selectedImages,
+                        ll_lunch_images,
+                        LUNCH
+                    )
+                }
+            } else {
+                Toast.makeText(
+                    context,
+                    "Sorry! unable to upload image/images",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+        }
+    private var resultLauncher3 =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            val resultCode = result?.resultCode
+            val intent: Intent? = result.data
+            if (resultCode == RESULT_OK) {
+                val selectedImages: ClipData = intent?.clipData!!
+                if (selectedImages.itemCount > 4 || ll_dinner_images.childCount + selectedImages.itemCount > 4) {
+                    showAddImageErrorDialog()
+                } else {
+                    outer_ll_dinner_images.visibility = View.VISIBLE
+                    updateUI(
+                        selectedImages,
+                        ll_dinner_images,
+                        DINNER
+                    )
                 }
             } else {
                 Toast.makeText(
@@ -372,12 +412,24 @@ class CookFoodMenuFragment : BaseFragment() {
             }
         }
 
-    private fun openSomeActivityForResult() {
+    private fun openSomeActivityForResult(requestCode: Int) {
         val intent = Intent(Intent.ACTION_PICK)
         intent.type = "image/*"
         intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true)
         Intent.createChooser(intent, "Select Picture")
-        resultLauncher.launch(intent)
+        when (requestCode) {
+            1 -> {
+                resultLauncher1.launch(intent)
+            }
+
+            2 -> {
+                resultLauncher2.launch(intent)
+            }
+
+            3 -> {
+                resultLauncher3.launch(intent)
+            }
+        }
     }
 
     private fun getPathFromURI(uri: Uri): String? {
@@ -392,54 +444,6 @@ class CookFoodMenuFragment : BaseFragment() {
             cursor.close()
         }
         return res
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, intent: Intent?) {
-        super.onActivityResult(requestCode, resultCode, intent)
-        when (requestCode) {
-            2 -> {
-                if (resultCode == RESULT_OK) {
-                    val selectedImages: ClipData = intent?.clipData!!
-                    if (selectedImages.itemCount > 4 || ll_lunch_images.childCount + selectedImages.itemCount > 4) {
-                        showAddImageErrorDialog()
-                    } else {
-                        outer_ll_lunch_images.visibility = View.VISIBLE
-                        updateUI(
-                            selectedImages,
-                            ll_lunch_images,
-                            LUNCH
-                        )
-                    }
-                } else {
-                    Toast.makeText(
-                        context,
-                        "Sorry! unable to upload image/images",
-                        Toast.LENGTH_LONG
-                    ).show()
-                }
-            }
-            3 -> {
-                if (resultCode == RESULT_OK) {
-                    val selectedImages: ClipData = intent?.clipData!!
-                    if (selectedImages.itemCount > 4 || ll_dinner_images.childCount + selectedImages.itemCount > 4) {
-                        showAddImageErrorDialog()
-                    } else {
-                        outer_ll_dinner_images.visibility = View.VISIBLE
-                        updateUI(
-                            selectedImages,
-                            ll_dinner_images,
-                            DINNER
-                        )
-                    }
-                } else {
-                    Toast.makeText(
-                        context,
-                        "Sorry! unable to upload image/images",
-                        Toast.LENGTH_LONG
-                    ).show()
-                }
-            }
-        }
     }
 
     private fun updateUI(
@@ -492,6 +496,7 @@ class CookFoodMenuFragment : BaseFragment() {
                         dragListener()
                     )
                 }
+
                 LUNCH -> {
                     imageUriLunch.add(selectedImages.getItemAt(i).uri)
                     setImages(imageSliderLunch, imageUriLunch)
@@ -499,6 +504,7 @@ class CookFoodMenuFragment : BaseFragment() {
                         dragListener()
                     )
                 }
+
                 DINNER -> {
                     imageUriDinner.add(selectedImages.getItemAt(i).uri)
                     setImages(imageSliderDinner, imageUriDinner)
@@ -522,11 +528,13 @@ class CookFoodMenuFragment : BaseFragment() {
                 llImages = ll_lunch_images
                 outerll = outer_ll_lunch_images
             }
+
             DINNER -> {
                 imageUri = imageUriDinner
                 llImages = ll_dinner_images
                 outerll = outer_ll_dinner_images
             }
+
             else -> {
                 imageUri = imageUriBreakfast
                 llImages = ll_breakfast_images
@@ -542,11 +550,13 @@ class CookFoodMenuFragment : BaseFragment() {
                             llImages = ll_lunch_images
                             outerll = outer_ll_lunch_images
                         }
+
                         DINNER -> {
                             imageUri = imageUriDinner
                             llImages = ll_dinner_images
                             outerll = outer_ll_dinner_images
                         }
+
                         else -> {
                             imageUri = imageUriBreakfast
                             llImages = ll_breakfast_images
@@ -563,6 +573,7 @@ class CookFoodMenuFragment : BaseFragment() {
                     iv_delete_image.alpha = 1f
                     true
                 }
+
                 DragEvent.ACTION_DRAG_ENDED -> {
                     iv_delete_image.setColorFilter(
                         ContextCompat.getColor(
@@ -580,6 +591,7 @@ class CookFoodMenuFragment : BaseFragment() {
                     sv_food_menu.alpha = 1f
                     true
                 }
+
                 DragEvent.ACTION_DROP -> {
                     for (i: Int in 0 until imageUri.size) {
                         if (imageUri.get(i).equals(event.clipData.getItemAt(0).uri)) {
@@ -594,6 +606,7 @@ class CookFoodMenuFragment : BaseFragment() {
                     }
                     true
                 }
+
                 else -> {
                     //do nothing
                     true
