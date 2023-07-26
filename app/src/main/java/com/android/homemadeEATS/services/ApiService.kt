@@ -14,8 +14,17 @@ import retrofit2.http.*
 
 
 interface ApiService {
+    @Multipart
     @POST("/auth/signup")
-    suspend fun signUp(@Body signupRequest: SignupRequest): Response<SignupResponse>
+    suspend fun signUp(
+        @Part certificate: MultipartBody.Part?,
+        @Part email: MultipartBody.Part,
+        @Part password: MultipartBody.Part,
+        @Part firstName: MultipartBody.Part,
+        @Part lastName: MultipartBody.Part,
+        @Part phoneNumber: MultipartBody.Part,
+        @Part userType: MultipartBody.Part
+    ): Response<SignupResponse>
 
     @POST("/auth/signin")
     suspend fun signIn(@Body signinRequest: SigninRequest): Response<SigninResponse>

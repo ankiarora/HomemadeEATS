@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
         <variable
@@ -7,7 +8,7 @@
             type="com.android.homemadeEATS.model.customer.CustomerMeal" />
     </data>
 
-    <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -39,15 +40,15 @@
                 android:padding="@dimen/dp_8">
 
                 <TextView
+                    android:id="@+id/cookName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/cookName"
+                    android:layout_marginTop="@dimen/dp_4"
+                    android:layout_marginBottom="@dimen/dp_2"
                     android:text="@{customerMeal.cookFirstName +` `+ customerMeal.cookLastName}"
-                    android:textSize="@dimen/sp_16"
                     android:textAllCaps="true"
                     android:textColor="@color/gray"
-                    android:layout_marginTop="@dimen/dp_4"
-                    android:layout_marginBottom="@dimen/dp_2" />
+                    android:textSize="@dimen/sp_16" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -88,7 +89,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/tvPrice"
-                        android:text="@{`Price: Rs. `+customerMeal.price}"
+                        android:text="@{`Price: $`+customerMeal.price}"
                         android:textColor="@color/gray"
                         android:textSize="@dimen/sp_16"
                         android:layout_marginTop="@dimen/dp_4"

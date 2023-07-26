@@ -1,5 +1,7 @@
 package com.android.homemadeEATS.domain.common
 
+import android.content.Context
+import android.net.Uri
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
@@ -10,8 +12,8 @@ import com.android.homemadeEATS.repository.common.UserProfileRepository
 
 class LoginDomain {
 
-    fun signUp(signUpRequest: SignupRequest): LiveData<SignupResponse> {
-        return LoginRepository.signUp(signUpRequest)
+    fun signUp(context: Context?,signUpRequest: SignupRequest, selectedPdfUri: Uri): LiveData<SignupResponse> {
+        return LoginRepository.signUp(context, signUpRequest, selectedPdfUri)
     }
 
     fun signIn(signInRequest: SigninRequest): LiveData<SigninResponse> {

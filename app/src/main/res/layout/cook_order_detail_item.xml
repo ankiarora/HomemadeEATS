@@ -54,7 +54,10 @@
                 android:layout_marginTop="@dimen/dp_16"
                 android:layout_marginBottom="@dimen/dp_16"
                 android:layout_marginLeft="@dimen/dp_8"
-                android:layout_marginRight="@dimen/dp_8"/>
+                android:layout_marginRight="@dimen/dp_8">
+
+
+            </TableLayout>
 
             <TextView
                 android:id="@+id/tvPrice"
@@ -66,7 +69,7 @@
                 android:layout_marginBottom="@dimen/dp_2"
                 android:layout_marginLeft="@dimen/dp_8"
                 android:layout_marginRight="@dimen/dp_8"
-                android:text="@{`Meal Price : Rs.`+mealDetail.price}" />
+                android:text="@{`Meal Price : $`+mealDetail.price}" />
 
             <TextView
                 android:id="@+id/tvQuantity"

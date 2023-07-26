@@ -41,16 +41,16 @@ class CookNavActivity : MainActivity() {
     private fun setFcmToken(fcmToken: String) {
         if (!TextUtils.isEmpty(fcmToken)) {
             LoginRepository.setFCMToken(FCMToken(fcmToken)).observe(
-                this,
-                {
-                    if (!it?.error.isNullOrEmpty()) {
-                        Toast.makeText(this, it?.error, Toast.LENGTH_LONG).show()
-                    } else {
-                        it?.message?.let { it1 ->
-                            Toast.makeText(this, it.message, Toast.LENGTH_LONG).show()
-                        }
+                this
+            ) {
+                if (!it?.error.isNullOrEmpty()) {
+                    Toast.makeText(this, it?.error, Toast.LENGTH_LONG).show()
+                } else {
+                    it?.message?.let { it1 ->
+                        Toast.makeText(this, it.message, Toast.LENGTH_LONG).show()
                     }
-                })
+                }
+            }
         }
     }
 

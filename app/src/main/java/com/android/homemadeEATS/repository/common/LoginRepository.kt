@@ -1,5 +1,9 @@
 package com.android.homemadeEATS.repository.common
 
+import android.content.Context
+import android.database.Cursor
+import android.net.Uri
+import android.provider.MediaStore
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.android.homemadeEATS.AppConstants
@@ -7,18 +11,98 @@ import com.android.homemadeEATS.model.common.*
 import com.android.homemadeEATS.network.ApiFactory
 import com.google.gson.Gson
 import kotlinx.coroutines.*
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import java.io.File
+
 
 object LoginRepository {
-    var fcmToken: String? = ""
     var accessToken: String? = null
     var user: User? = null
-    fun signUp(request: SignupRequest): MutableLiveData<SignupResponse> {
+
+    private fun getPathFromURI(context: Context?, uri: Uri): String? {
+        var res: String? = null
+        val proj = arrayOf(MediaStore.Images.Media.DATA)
+        val cursor: Cursor? = context?.contentResolver?.query(uri, proj, null, null, null)
+        if (cursor != null) {
+            cursor.moveToFirst()
+            res =
+                cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA))
+            cursor.close()
+        }
+        return res
+    }
+
+    fun signUp(
+        context: Context?,
+        request: SignupRequest,
+        selectedPdfUri: Uri
+    ): MutableLiveData<SignupResponse> {
         val job: CompletableJob = Job()
         return object : MutableLiveData<SignupResponse>() {
             override fun onActive() {
                 job.let { job ->
                     CoroutineScope(Dispatchers.IO + job).launch {
-                        val response = ApiFactory.apiWithoutToken.signUp(request)
+
+                        var pdfFilePart: MultipartBody.Part? = null
+                        if (selectedPdfUri != Uri.EMPTY) {
+                            val pdfFile = File(getPathFromURI(context, selectedPdfUri))
+                            // Create a file part from the selected PDF file
+                            val filePart = RequestBody.create(
+                                "multipart/form-data".toMediaTypeOrNull(),
+                                pdfFile
+                            )
+                            pdfFilePart =
+                                MultipartBody.Part.createFormData(
+                                    "certificate",
+                                    pdfFile.getName(),
+                                    filePart
+                                )
+                        }
+
+                        val email: MultipartBody.Part =
+                            MultipartBody.Part.createFormData(
+                                "email",
+                                request.email!!
+                            )
+
+                        val password: MultipartBody.Part =
+                            MultipartBody.Part.createFormData(
+                                "password",
+                                request.password!!
+                            )
+                        val firstName: MultipartBody.Part =
+                            MultipartBody.Part.createFormData(
+                                "firstName",
+                                request.firstName!!
+                            )
+                        val lastName: MultipartBody.Part =
+                            MultipartBody.Part.createFormData(
+                                "lastName",
+                                request.lastName!!
+                            )
+                        val phoneNumber: MultipartBody.Part =
+                            MultipartBody.Part.createFormData(
+                                "phoneNumber",
+                                request.phoneNumber!!
+                            )
+                        val userType: MultipartBody.Part =
+                            MultipartBody.Part.createFormData(
+                                "userType",
+                                request.userType.toString()
+                            )
+
+                        val response = ApiFactory.apiWithoutToken.signUp(
+                            pdfFilePart,
+                            email,
+                            password,
+                            firstName,
+                            lastName,
+                            phoneNumber,
+                            userType
+                        )
                         withContext(Dispatchers.Main) {
                             value = if (response.code() == AppConstants.SUCCESS) {
                                 SignupResponse(response.body()?.message, null)
@@ -78,7 +162,7 @@ object LoginRepository {
                                     value = SigninResponse(
                                         null,
                                         null,
-                                        "Please enter correct username and password."
+                                        "Please enter correct username and password.\n Or your certificate is not yet verified."
                                     )
                                 } else {
                                     value = SigninResponse(

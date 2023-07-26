@@ -1,6 +1,8 @@
 package com.android.homemadeEATS.viewmodel.common
 
 import android.app.Application
+import android.content.Context
+import android.net.Uri
 import android.text.TextUtils
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -18,8 +20,8 @@ open class RegistrationViewModel(application: Application) : BaseViewModel(appli
     var reenterPassword = MutableLiveData<String>()
 
     var loginDomain: LoginDomain = LoginDomain()
-    fun getRegistrationResponse(): LiveData<SignupResponse> {
-        return loginDomain.signUp(getSignupRequest())
+    fun getRegistrationResponse(context: Context?, selectedPdfUri: Uri): LiveData<SignupResponse> {
+        return loginDomain.signUp(context, getSignupRequest(), selectedPdfUri)
     }
 
     private fun getSignupRequest(): SignupRequest {
